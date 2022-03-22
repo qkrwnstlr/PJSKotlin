@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             }
             Exam.setOnClickListener {
                 val dialog = ExamDialog(this@MainActivity)
-                dialog.startDialog()
+                dialog.startDialog(dictionary)
             }
             addWord.setOnClickListener {
                 val dialog = AddDialog(this@MainActivity)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 class ExamDialog(context: Context){
     private val dialog = Dialog(context)
-    fun startDialog(){
+    fun startDialog(dictionary:HashMap<String,String>){
         dialog.setContentView(R.layout.dialog_exam)
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
@@ -49,6 +49,12 @@ class ExamDialog(context: Context){
         val qWord = dialog.findViewById<TextView>(R.id.questionWord)
         val qMeaning = dialog.findViewById<EditText>(R.id.questionMeaning)
         val buttonCheck = dialog.findViewById<Button>(R.id.Button_Check)
+        val test = dictionary.keys.toHashSet().toMutableList().shuffled().toList()
+        var idx = 0
+        buttonCheck.setOnClickListener {
+            if(dictionary[test[idx]]!! == qMeaning.text.toString())
+                qWord.text = test[idx++]
+        }
         dialog.show()
     }
 }
