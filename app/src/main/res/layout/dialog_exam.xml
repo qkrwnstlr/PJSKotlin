@@ -8,14 +8,16 @@
     android:orientation="vertical"
     android:weightSum="2.5">
 
-    <EditText
+    <TextView
         android:id="@+id/questionWord"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="hello"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/questionMeaning"
@@ -23,8 +25,9 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:ems="10"
+        android:hint="answar"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/Button_Check"

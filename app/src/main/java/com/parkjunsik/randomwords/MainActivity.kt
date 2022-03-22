@@ -52,7 +52,7 @@ class ExamDialog(context: Context){
         val test = dictionary.keys.toHashSet().toMutableList().shuffled().toList()
         var idx = 0
         buttonCheck.setOnClickListener {
-            if(dictionary[test[idx]]!! == qMeaning.text.toString())
+            if(dictionary[qWord.text.toString()] == qMeaning.text.toString())
                 qWord.text = test[idx++]
         }
         dialog.show()

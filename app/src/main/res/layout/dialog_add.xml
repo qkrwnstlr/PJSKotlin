@@ -15,8 +15,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="word"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/newMeaning"
@@ -24,8 +24,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="meaning"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/Button_addWord"
