@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.parkjunsik.randomwords.databinding.ActivityMainBinding
 
@@ -15,11 +16,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val dictionary:HashMap<String,String> = hashMapOf<String,String>()
+        val dictionary:HashMap<String,String> = hashMapOf()
 
         with(binding){
             homeTitle.setOnClickListener {
                 Toast.makeText(this@MainActivity,"$dictionary",Toast.LENGTH_SHORT).show()
+            }
+            Exam.setOnClickListener {
+                val dialog = ExamDialog(this@MainActivity)
+                dialog.startDialog()
             }
             addWord.setOnClickListener {
                 val dialog = AddDialog(this@MainActivity)
@@ -31,6 +36,20 @@ class MainActivity : AppCompatActivity() {
                 })
             }
         }
+    }
+}
+
+class ExamDialog(context: Context){
+    private val dialog = Dialog(context)
+    fun startDialog(){
+        dialog.setContentView(R.layout.dialog_exam)
+        dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.setCancelable(true)
+        val qWord = dialog.findViewById<TextView>(R.id.questionWord)
+        val qMeaning = dialog.findViewById<EditText>(R.id.questionMeaning)
+        val buttonCheck = dialog.findViewById<Button>(R.id.Button_Check)
+        dialog.show()
     }
 }
 

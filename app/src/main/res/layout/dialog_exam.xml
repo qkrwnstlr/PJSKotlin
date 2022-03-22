@@ -8,9 +8,8 @@
     android:orientation="vertical"
     android:weightSum="2.5">
 
-
     <EditText
-        android:id="@+id/newWord"
+        android:id="@+id/questionWord"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -19,7 +18,7 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/newMeaning"
+        android:id="@+id/questionMeaning"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -28,7 +27,7 @@
         android:text="Name" />
 
     <Button
-        android:id="@+id/Button_addWord"
+        android:id="@+id/Button_Check"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
