@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Room
 import com.parkjunsik.randomwords.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val dictionary:HashMap<String,String> = hashMapOf()
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "wordsDB"
+        ).build()
+        val dbDao = db.DatabaseDao()
+        val words:List<Word> = dbDao.loadAllWords()
 
         with(binding){
             homeTitle.setOnClickListener {
