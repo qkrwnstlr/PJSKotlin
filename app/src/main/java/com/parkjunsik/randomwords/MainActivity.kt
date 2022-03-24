@@ -51,6 +51,7 @@ class ExamDialog(context: Context){
         val buttonCheck = dialog.findViewById<Button>(R.id.Button_Check)
         val test = dictionary.keys.toHashSet().toMutableList().shuffled().toList()
         var idx = 0
+        qWord.text = test[idx++]
         buttonCheck.setOnClickListener {
             if(dictionary[qWord.text.toString()] == qMeaning.text.toString())
                 qWord.text = test[idx++]
