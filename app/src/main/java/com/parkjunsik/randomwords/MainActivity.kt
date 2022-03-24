@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val dictionary:HashMap<String,String> = hashMapOf()
 
         val db = Room.databaseBuilder(
             applicationContext,
@@ -29,18 +28,18 @@ class MainActivity : AppCompatActivity() {
 
         with(binding){
             homeTitle.setOnClickListener {
-                Toast.makeText(this@MainActivity,"$dictionary",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity,"$words",Toast.LENGTH_SHORT).show()
             }
             Exam.setOnClickListener {
                 val dialog = ExamDialog(this@MainActivity)
-                dialog.startDialog(dictionary)
+                dialog.startDialog(words)
             }
             addWord.setOnClickListener {
                 val dialog = AddDialog(this@MainActivity)
                 dialog.startDialog()
                 dialog.setOnClickedListener(object:AddDialog.ButtonClickListener{
                     override fun onClicked(newWord: String,newMeaning: String){
-                        dictionary[newWord]=newMeaning
+                        dbDao.insert(Word(words.size,newWord,newMeaning,))
                     }
                 })
             }
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
 class ExamDialog(context: Context){
     private val dialog = Dialog(context)
-    fun startDialog(dictionary:HashMap<String,String>){
+    fun startDialog(dictionary:List<Word>){
         dialog.setContentView(R.layout.dialog_exam)
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
@@ -58,12 +57,12 @@ class ExamDialog(context: Context){
         val qWord = dialog.findViewById<TextView>(R.id.questionWord)
         val qMeaning = dialog.findViewById<EditText>(R.id.questionMeaning)
         val buttonCheck = dialog.findViewById<Button>(R.id.Button_Check)
-        val test = dictionary.keys.toHashSet().toMutableList().shuffled().toList()
+        val test = dictionary.shuffled().toList()
         var idx = 0
-        qWord.text = test[idx++]
+        qWord.text = test[idx].word
         buttonCheck.setOnClickListener {
-            if(dictionary[qWord.text.toString()] == qMeaning.text.toString())
-                qWord.text = test[idx++]
+            if(dictionary[idx].meaning == qMeaning.text.toString())
+                qWord.text = test[++idx].word
         }
         dialog.show()
     }

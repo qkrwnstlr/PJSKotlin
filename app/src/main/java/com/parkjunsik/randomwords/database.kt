@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Entity(tableName="tb_database")
 data class Word(
-    @PrimaryKey(autoGenerate = true) val id:Long,
+    @PrimaryKey(autoGenerate = true) val id:Int,
     @ColumnInfo(name="word") var word:String,
     @ColumnInfo(name="meaning") var meaning:String,
     @ColumnInfo(name="date") var date:Int
