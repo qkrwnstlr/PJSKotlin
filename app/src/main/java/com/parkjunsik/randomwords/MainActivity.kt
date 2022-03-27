@@ -2,6 +2,7 @@ package com.parkjunsik.randomwords
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
                         insert(Word(newWord,newMeaning,Calendar.getInstance().get(Calendar.DAY_OF_MONTH)))
                     }
                 })
+            }
+            vocabulary.setOnClickListener {
+                val examActivity = Intent(this@MainActivity, ExamActivity::class.java)
+                examActivity.putExtra("data",data.toTypedArray())
+                startActivity(examActivity)
             }
         }
     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
     android:orientation="vertical"
     android:weightSum="2.5">
@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/newWord"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="word"
@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/newMeaning"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="meaning"
@@ -30,7 +30,8 @@
     <Button
         android:id="@+id/Button_addWord"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="0.5"
-        android:text="Button" />
+        android:text="input"
+        android:textAllCaps="false" />
 </LinearLayout>

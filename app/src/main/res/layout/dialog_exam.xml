@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
     android:orientation="vertical"
     android:weightSum="2.5">
@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/questionWord"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:ems="10"
         android:gravity="center_vertical"
@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/questionMeaning"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="answar"
@@ -32,7 +32,8 @@
     <Button
         android:id="@+id/Button_Check"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_weight="0.5"
-        android:text="Button" />
+        android:textAllCaps="false"
+        android:text="check" />
 </LinearLayout>

@@ -43,7 +43,7 @@
         android:id="@+id/homeTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@drawable/title_shape"
         android:gravity="center"
         android:text="Random Words"
         android:textAllCaps="false"
