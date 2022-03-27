@@ -2,13 +2,14 @@ package com.parkjunsik.randomwords
 
 import android.content.Context
 import androidx.room.*
+import java.io.Serializable
 
 @Entity(tableName="tb_database")
 data class Word(
     @ColumnInfo(name="word") var word:String,
     @ColumnInfo(name="meaning") var meaning:String,
     @ColumnInfo(name="date") var date:Int
-){
+):Serializable{
     @PrimaryKey(autoGenerate = true)var id:Int=0
 }
 

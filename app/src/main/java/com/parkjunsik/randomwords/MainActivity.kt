@@ -18,11 +18,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private lateinit var db: WordDatabase
-    lateinit var data:List<Word>
+    lateinit var data:ArrayList<Word>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -50,7 +51,8 @@ class MainActivity : AppCompatActivity() {
             }
             vocabulary.setOnClickListener {
                 val examActivity = Intent(this@MainActivity, ExamActivity::class.java)
-                examActivity.putExtra("data",data.toTypedArray())
+                refreshDb()
+                examActivity.putExtra("data",data)
                 startActivity(examActivity)
             }
         }
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             data = CoroutineScope(Dispatchers.IO).async {
                 db.DatabaseDao().loadAllWords()
-            }.await()
+            }.await() as ArrayList<Word>
         }
     }
     private fun insert(word: Word){
