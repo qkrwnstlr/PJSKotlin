@@ -30,6 +30,7 @@ class VocabularyAdapter(val listData: ArrayList<Word>) : RecyclerView.Adapter<Vo
             binding.id.text = word.id.toString()
             binding.word.text = word.word
             binding.meaning.text = word.meaning
+            binding.date.text = word.date.toString()
         }
     }
 
